@@ -216,7 +216,7 @@ header .header-content {
     background: linear-gradient(0, var(--primary),black 150%);
     box-sizing: border-box;
     margin-inline: auto;
-    height: 6.9em;
+    height: fit-content;
     width: 100%;
     padding: 0.8em 1em;
     padding-top: 2em;
