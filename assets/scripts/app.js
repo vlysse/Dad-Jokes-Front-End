@@ -5,6 +5,12 @@ export function init(){
     const genBtn = document.getElementById("generate-btn");
     const loader = document.querySelector(".loader");
     const contentDiv = document.querySelector('#main-w-content');
+    const darklightbtn = document.querySelector("#dark-light-btn");
+
+    //darkmody funtion
+    darklightbtn.addEventListener("click", ()=>{
+        document.querySelector("body").classList.toggle("light-mode");
+    })
 
     //to show loader and remove button    
     function load() {
@@ -24,18 +30,13 @@ export function init(){
         try {
             load()
             let joke = await getJoke();
-            if(joke.hasOwnProperty("jokecontent")){
-                await putContent(joke.jokecontent, joke.title);
-                loadFinish()
-            }                
-            else{
-                await putContent(joke.title);
-                loadFinish();
-            }
+            await putContent(joke);
+            loadFinish()               
             
         }catch(error) {
+            console.log(error);
             modal.open();
-            loadFinish()
+            loadFinish();
         }        
         
     });

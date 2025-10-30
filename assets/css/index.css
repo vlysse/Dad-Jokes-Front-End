@@ -9,10 +9,9 @@
 }
 .light-mode {
     --primary:#F8FAFC;
-    --seconary: #D9EAFD;
-    --secondary-hover: rgba(248, 250, 252, .6);
+    --secondary: #D9EAFD;
+    --secondary-hover: rgba(9, 126, 243, 0.6);
     --icon: #3b629a;
-    --text: black;
     --btn-text: black;
 }
 /*reset*/
@@ -57,6 +56,9 @@ button {
           mask-composite: subtract;
   animation: l3 1s infinite linear;
 }
+body.light-mode .loader{
+    background-color: var(--secondary-hover);
+} 
 
 
 /*base styles*/
@@ -106,6 +108,15 @@ button#generate-btn {
         flex-grow: 1;
     }
 }
+body.light-mode button#generate-btn{
+    box-shadow: unset;
+    &:hover {
+        >span {
+            color: var(--primary);
+        }
+        
+    }
+}
 
 
 
@@ -150,6 +161,9 @@ button#generate-btn {
     font-size: 1.2em;
     min-width: 12em
 }
+body.light-mode #error-generation .error-msg {
+    color: var(--icon);
+}
 #error-generation button {
     margin-top: 1.2em;
     font-size: 1em;
@@ -164,9 +178,13 @@ button#generate-btn {
     color: var(--btn-text);
     border-radius: 50px;
     border: none;
-    transition: transform .5s ease;
+    transition: all .5s ease;
     &:active {
         transform: scale(1.10);
+    }
+    &:hover {
+        background-color: var(--secondary-hover);
+        cursor: pointer;
     }
 }
 button#generate-btn .material-symbols-outlined {
@@ -179,10 +197,13 @@ button#generate-btn .material-symbols-outlined {
 
 /*fonts*/
 h1,h2,h3,h4 {
-    color: white;
+    color: var(--icon);
     font-weight: normal;
 }
-p,a,li,span {
+body.light-mode .gen-content p {
+    color: var(--icon);
+}
+p,a,li {
     color: var(--text);
 }
 
@@ -200,6 +221,7 @@ h3 {
 }
 span {
     font-size: 1rem;
+    color: var(--icon);
 }
 /*mobile*/
 
@@ -232,6 +254,12 @@ header .header-content {
     >button span.material-symbols-outlined {
         font-size: 2rem;
     }    
+}
+header #dark-light-btn {
+    transition: all .25s ease-in-out;
+}
+body.light-mode header #dark-light-btn {
+    transform: rotate(180deg);
 }
 
 

@@ -1,6 +1,6 @@
 import { typeWrite } from "./typewrite.js";
 
-export async function putContent(content, title=null) {
+export async function putContent(content) {
     
     const logoDiv =  document.getElementById("main-no-content");
     const contentDiv = document.getElementById("main-w-content") // selecting the element;
@@ -20,7 +20,6 @@ export async function putContent(content, title=null) {
         const parser = new DOMParser();
         const templateHtml = parser.parseFromString(templateDivText, "text/html").querySelector(".gen-content");//turn the string into actual documents
         
-        templateHtml.querySelector("h2").innerHTML = title !== null ? title : "Untitled";
         contentDiv.appendChild(templateHtml);// appending the document inside the html
         
         if(logoDiv.classList.contains("shown-flex")) {
